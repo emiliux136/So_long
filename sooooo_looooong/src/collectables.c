@@ -6,12 +6,13 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:22:00 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/02/06 19:10:18 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/24 11:15:12 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+//Go over the whole map with two iterators and counts the amount of collectables
 int	total_collec(t_game *game)
 {
 	int	total;
@@ -20,7 +21,7 @@ int	total_collec(t_game *game)
 
 	total = 0;
 	i = 0;
-	while(game->map[i])
+	while (game->map[i])
 	{
 		j = 0;
 		while (game->map[i][j])
@@ -44,9 +45,9 @@ void	delete_orbs(t_game *game)
 	while (i < count)
 	{
 		if (((game->imag->collec->instances[i].y
-				== game->imag->chara->instances->y)
-			&& (game->imag->collec->instances[i].x
-				== game->imag->chara->instances->x))
+					== game->imag->chara->instances->y)
+				&& (game->imag->collec->instances[i].x
+					== game->imag->chara->instances->x))
 			&& game->imag->collec->instances[i].enabled == true)
 		{
 			count--;
@@ -59,7 +60,7 @@ void	delete_orbs(t_game *game)
 
 void	collect_orbs(t_game *game)
 {
-	if(game->map[game->imag->chara->instances->y / 32]
+	if (game->map[game->imag->chara->instances->y / 32]
 		[game->imag->chara->instances->x / 32] == MAP_COLLECTABLE)
 	{
 		delete_orbs(game);

@@ -6,15 +6,15 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:15:21 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/03/18 17:56:13 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:30:36 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#define WIDTH 256
-#define HEIGHT 256
+# define WIDTH 256
+# define HEIGHT 256
 
 # include "../lib/libft/libft.h"
 # include "../lib/printf/ft_printf.h"
@@ -44,13 +44,15 @@
 # define WALL_MSG "Error:\nWalls aren't closed. (ㅠ﹏ㅠ)\n"
 # define MIN_TILES_MSG "Error:\nComponents are not valid. (ㅠ﹏ㅠ)\n"
 # define PATH_MSG "Error:\nCan't find a way out. (ㅠ﹏ㅠ)\n"
+# define FTL "Failed to load: "
 
 # define BUFF_SIZE 10000
 # define FALSE		1
 # define TRUE		0
 # define MOVE		32
 
-typedef struct s_textures {
+typedef struct s_textures
+{
 	mlx_texture_t	*floor;
 	mlx_texture_t	*wall;
 	mlx_texture_t	*collec;
@@ -59,7 +61,8 @@ typedef struct s_textures {
 	mlx_texture_t	*exit_2;
 }				t_textures;
 
-typedef struct s_images {
+typedef struct s_images
+{
 	mlx_image_t	*floor;
 	mlx_image_t	*wall;
 	mlx_image_t	*collec;
@@ -82,30 +85,34 @@ typedef struct s_game
 	char				**map_2;
 }						t_game;
 
-int 	main(int argc, char **argv);
+int		main(int argc, char **argv);
 
-//=================== MAPS ===================//
+//=================== MAPS MANAGEMENT ===================//
 
-int 	check_mapextension(char **name); //chequea que la extension es .ber
-char	**read_map(char *script_map); //lee el mapa y lo devuelve en un char al que le hacemos un split
-int		check_map(char **map); // FUNCION RAMAL QUE CHEQUEA LAS DE ABAJO
-int		empty_map(char **map); //si el mapa esta vacio
-int		rectangle_map(char **map); //si es un rectangulo
-int		wrong_map(char **map); //si algo no se corresponde a lo esperable... ejemplo hay una letra que no es nada
-int		wall_map(char **map); //chequea si las paredes esteriores estan cerradas 
-int		min_titles(char **map); // falla si no hay coleccionables o salidas suficientes
-void	free_map(char **map); 
-int		valido(t_game *game, char *fd);
-void	flood_map(t_game *game, int y, int x); //rellena todo el mapa de X de forma iterativa
-int		*start_position(char **map); //mira donde empieza nuestro personaje y devuelve las coordenadas en forma de doble valor numérico
-int		check_flood(char **map); // Comprueba que todo se ha rellenado de X correctamente
-void	size_map(t_game *game, char **map); //almacena el numero de coleccionables en n_collect y el mapwidth y el map height 
-// multipica i*32 por que cada casilla tiene 32pixeles
-int		total_collec(t_game *game); //Cuenta la cantidad de coleccionables que hay y los devuelve
+int		check_mapextension(char **name);
+char	**read_map(char *script_map);
+int		check_map(char **map);
+int		empty_map(char **map);
+int		rectangle_map(char **map);
+int		wall_map(char **map);
+int		min_titles(char **map);
+void	free_map(char **map);
+int		usefull(t_game *game, char *fd);
+void	flood_map(t_game *game, int y, int x);
+int		*start_position(char **map);
+int		check_flood(char **map);
+void	size_map(t_game *game, char **map);
 
-int		wrongwall();
-char	**emptymsg();
-//=================== MLX42 ===================//
+//=================== ERROR MANAGEMENT ===================//
+
+int		wrongwall(void);
+char	**emptymsg(void);
+void	imag_error(t_game *game);
+int		wrong_map(char **map);
+int		init_terminator(t_game *game);
+void	free_game(t_game *game);
+
+//=================== MLX42 COMMUNICATION ===================//
 
 int		init_game(t_game *game);
 void	get_textures(t_game *game);

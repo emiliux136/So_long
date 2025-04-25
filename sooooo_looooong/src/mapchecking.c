@@ -6,21 +6,25 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 15:54:57 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/03/18 17:50:54 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/07 11:52:06 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int empty_map(char **map)
+// Checks if the map exist by looking fot the first line of the matrix.
+// If OK return True, if does't find anything return False.
+int	empty_map(char **map)
 {
-	if(map[0])
+	if (map[0])
 		return (TRUE);
 	else
 		return (FALSE);
 }
 
-int rectangle_map(char **map)
+// Measures the first line of the map, and check if all lines
+// have the same lenght and return TRUE, if not return FALSE.
+int	rectangle_map(char **map)
 {
 	size_t	len;
 	int		i;
@@ -29,22 +33,24 @@ int rectangle_map(char **map)
 	i = 1;
 	while (map[i])
 	{
-		if(ft_strlen(map[i]) != len)
-			{
+		if (ft_strlen(map[i]) != len)
+		{
 			ft_printf("%s", RECT_MSG);
 			return (FALSE);
-			}
+		}
 		else
 			i++;
 	}
 	return (TRUE);
 }
 
+//Go over the whole map with two iterators and checks if everything
+//is there, if something is missing return FALSE and prints a message.
 int	wrong_map(char **map)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (map[i])
 	{
@@ -54,10 +60,10 @@ int	wrong_map(char **map)
 			if (!(map[i][j] == MAP_EXIT || map[i][j] == MAP_ENTRY
 				|| map[i][j] == MAP_WALL || map[i][j] == MAP_FLOOR
 				|| (map[i][j] == MAP_COLLECTABLE)))
-				{
-					ft_printf("%s", WRONG_MSG);
-					return (FALSE);
-				}
+			{
+				ft_printf("%s", WRONG_MSG);
+				return (FALSE);
+			}
 			else
 				j++;
 		}
@@ -66,6 +72,8 @@ int	wrong_map(char **map)
 	return (TRUE);
 }
 
+//Check if the map is entirely surrounded by wall.
+//If everething is OK returns TRUE, if not, FALSE and prints a message.
 int	wall_map(char **map)
 {
 	size_t	i;
@@ -92,17 +100,18 @@ int	wall_map(char **map)
 	return (TRUE);
 }
 
+//This function checks if the extension of the map is correct.
 int	check_mapextension(char **av)
 {
 	int	i;
 
 	i = ft_strlen(av[1]);
-	if(av[1][i - 1] == 'r' && av[1][i - 2] == 'e' 
+	if (av[1][i - 1] == 'r' && av[1][i - 2] == 'e'
 		&& av[1][i - 3] == 'b' && av[1][i - 4] == '.')
-		{
-			if(av[1][i - 5] == '/' || av[1][i - 5] == '\n')
-				return(FALSE);
-			return(TRUE);
-		}
-	return(FALSE);
+	{
+		if (av[1][i - 5] == '/' || av[1][i - 5] == '\n')
+			return (FALSE);
+		return (TRUE);
+	}
+	return (FALSE);
 }

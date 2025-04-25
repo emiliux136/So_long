@@ -6,7 +6,7 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:24:04 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/03/18 17:59:01 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/25 13:30:21 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,37 +29,40 @@ void	free_map(char **map)
 	int	i;
 
 	i = -1;
-	while (map[++i])
-		free(map[i]);
-	free(map);
+	if(map)
+		{
+		while (map[++i])
+			free(map[i]);
+		free(map);
+		}
 }
 
 char	**read_map(char *script_map)
 {
-	int 	fd;
+	int		fd;
 	char	*temp_map;
 	char	**map;
 	int		nbytes;
 
 	nbytes = 0;
-	temp_map = ft_calloc(BUFF_SIZE + 1, sizeof(char));
-	if(!temp_map)
+	temp_map = ft_calloc (BUFF_SIZE + 1, sizeof(char));
+	if (!temp_map)
 		return (0);
 	fd = open(script_map, O_RDONLY);
 	if (fd < 0)
 	{
-			free(temp_map);
-			return (0);
-	}
-	nbytes = read(fd, temp_map, BUFF_SIZE);
-	if (nbytes == -1 || nbytes == 0)
-	{
-		free(temp_map);
+		free (temp_map);
 		return (0);
 	}
-	map = ft_split(temp_map, '\n');
-	free(temp_map);
-	close(fd);
+	nbytes = read (fd, temp_map, BUFF_SIZE);
+	if (nbytes == -1 || nbytes == 0)
+	{
+		free (temp_map);
+		return (0);
+	}
+	map = ft_split (temp_map, '\n');
+	free (temp_map);
+	close (fd);
 	return (map);
 }
 
@@ -72,7 +75,7 @@ int	check_map(char **map)
 	if (wrong_map(map) == FALSE)
 		return (ft_printf(WRONG_MSG), FALSE);
 	if (wall_map(map) == FALSE)
-		return  (ft_printf(WALL_MSG), FALSE);
+		return (ft_printf(WALL_MSG), FALSE);
 	if (min_titles(map) == FALSE)
 		return (ft_printf(MIN_TILES_MSG), FALSE);
 	return (TRUE);

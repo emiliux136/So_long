@@ -6,7 +6,7 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:24:59 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/02/06 19:11:40 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:29:44 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	min_titles(char **map)
 	int	o;
 	int	salida;
 	int	colec;
-	
+
 	i = 0;
 	salida = 0;
 	colec = 0;
@@ -44,8 +44,8 @@ int	*start_position(char **map)
 {
 	int	x;
 	int	y;
-	int *pos;
-	
+	int	*pos;
+
 	pos = (int *)ft_calloc(2, sizeof(int));
 	y = 0;
 	while (map[y])
@@ -82,9 +82,9 @@ int	check_flood(char **map)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
-	while(map[i])
+	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
@@ -99,10 +99,10 @@ int	check_flood(char **map)
 	return (TRUE);
 }
 
-int	valido(t_game *game, char *fd)
+int	usefull(t_game *game, char *fd)
 {
-	int *pos;
-	
+	int	*pos;
+
 	game->map_2 = read_map(fd);
 	pos = start_position(game->map_2);
 	flood_map(game, pos[0], pos[1]);
@@ -114,5 +114,5 @@ int	valido(t_game *game, char *fd)
 	}
 	free(pos);
 	free_map(game->map_2);
-	return(TRUE);
+	return (TRUE);
 }
