@@ -6,7 +6,7 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:08:32 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/04/25 13:07:26 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:11:35 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**emptymsg(void)
 //Function that prints the image error management.
 void	imag_error(t_game *game)
 {
-	if(game)	
+	if (game)
 		printf("Error:\nFailed to load one or more textures.\n");
 	if (!game->textu->floor)
 		printf("%s./textures/floor.png\n", FTL);

@@ -6,7 +6,7 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:24:04 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/04/25 13:30:21 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/25 17:12:24 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	free_map(char **map)
 	int	i;
 
 	i = -1;
-	if(map)
-		{
+	if (map)
+	{
 		while (map[++i])
 			free(map[i]);
 		free(map);
-		}
+	}
 }
 
 char	**read_map(char *script_map)

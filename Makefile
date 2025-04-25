@@ -22,7 +22,14 @@ GNL         = $(INC_DIR)/gnl.a
 PRINTF      = $(INC_DIR)/printf.a
 ALL_LIBS	= $(LIBS) $(LIBFT) $(GNL) $(PRINTF)
 # =================== SOURCE FILES =================== #
-SRC         = $(shell find $(SRC_DIR) -name '*.c')
+SRC         = src/collectables.c\
+				src/error_management.c\
+				src/images.c\
+				src/main.c\
+				src/map.c\
+				src/mapchecking.c\
+				src/mapchecking2.c\
+				src/move.c
 OBJ         = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # =================== COLORS =================== #
@@ -63,16 +70,10 @@ gnl:
 clean:
 	@echo "$(RED)Limpiando objetos...$(RESET)"
 	@$(RM) $(OBJ_DIR)
-	@$(MAKE) -C $(LIBFT_DIR) clean
-	@$(MAKE) -C $(PRINTF_DIR) clean
-	@$(MAKE) -C $(GNL_DIR) clean
 
 fclean: clean
 	@echo "$(RED)Eliminando ejecutable...$(RESET)"
 	@$(RM) $(NAME)
-	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@$(MAKE) -C $(PRINTF_DIR) fclean
-	@$(MAKE) -C $(GNL_DIR) fclean
 	@$(RM) $(LIBMLX)/build
 	@$(RM) $(INC_DIR)
 
