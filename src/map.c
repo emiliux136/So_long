@@ -6,7 +6,7 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:24:04 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/04/25 17:12:24 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:53:05 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	**read_map(char *script_map)
 	return (map);
 }
 
-int	check_map(char **map)
+int	check_map(char **map, t_game *game)
 {
 	if (empty_map(map) == FALSE)
 		return (ft_printf(EMPTY_MSG), FALSE);
@@ -76,7 +76,7 @@ int	check_map(char **map)
 		return (ft_printf(WRONG_MSG), FALSE);
 	if (wall_map(map) == FALSE)
 		return (ft_printf(WALL_MSG), FALSE);
-	if (min_titles(map) == FALSE)
+	if (min_titles(game) == FALSE)
 		return (ft_printf(MIN_TILES_MSG), FALSE);
 	return (TRUE);
 }

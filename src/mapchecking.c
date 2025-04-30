@@ -6,7 +6,7 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 15:54:57 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/04/07 11:52:06 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/30 15:01:25 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,14 @@ int	wall_map(char **map)
 	while (i < ft_strlen(map[0]))
 	{
 		if (map[0][i] != '1' || map[line - 1][i] != '1')
-			return (wrongwall());
+			return (FALSE);
 		i++;
 	}
 	j = 0;
-	while (i < (line - 1))
+	while (j < line)
 	{
-		if (map[j][0] != '1' || map[ft_strlen(map[0])][0] != '1')
-			return (wrongwall());
+		if (map[j][0] != '1' || map[j][ft_strlen(map[j]) - 1] != '1')
+			return (FALSE);
 		j++;
 	}
 	return (TRUE);

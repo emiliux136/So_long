@@ -6,7 +6,7 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:15:21 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/04/25 12:30:36 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:52:47 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ typedef struct s_game
 	int					count_collec;
 	int					move_count;
 	int					n_collec;
+	int					n_exit;
+	int					n_entry;
 	char				**map_2;
 }						t_game;
 
@@ -91,12 +93,13 @@ int		main(int argc, char **argv);
 
 int		check_mapextension(char **name);
 char	**read_map(char *script_map);
-int		check_map(char **map);
+int		check_map(char **map, t_game *game);
 int		empty_map(char **map);
 int		rectangle_map(char **map);
 int		wall_map(char **map);
-int		min_titles(char **map);
+int		min_titles(t_game *game);
 void	free_map(char **map);
+void	free_images(t_game *game);
 int		usefull(t_game *game, char *fd);
 void	flood_map(t_game *game, int y, int x);
 int		*start_position(char **map);
@@ -106,7 +109,7 @@ void	size_map(t_game *game, char **map);
 //=================== ERROR MANAGEMENT ===================//
 
 int		wrongwall(void);
-char	**emptymsg(void);
+int		emptymsg(void);
 void	imag_error(t_game *game);
 int		wrong_map(char **map);
 int		init_terminator(t_game *game);

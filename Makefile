@@ -2,7 +2,7 @@
 
 NAME        = so_long
 CC          = cc
-CFLAGS      = -Wall -Werror -Wextra -Wunreachable-code -Ofast
+CFLAGS      = -Wall -Werror -Wextra -Wunreachable-code -Ofast -fsanitize=address
 RM          = rm -rf
 
 # =================== DIRECTORIES =================== #

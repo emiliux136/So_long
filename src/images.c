@@ -6,7 +6,7 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:08:33 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/04/25 13:22:46 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:09:14 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	get_textures(t_game *game)
 		|| !game->textu->chara || !game->textu->exit || !game->textu->exit_2)
 	{
 		imag_error(game);
+		free_images(game);
 		free_game(game);
 		init_terminator(game);
 		exit(EXIT_FAILURE);

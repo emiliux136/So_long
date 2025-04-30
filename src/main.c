@@ -6,7 +6,7 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:05:08 by erigolon          #+#    #+#             */
-/*   Updated: 2025/04/25 13:30:01 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:53:47 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	free_game(t_game *game)
 	free_map(game->map);
 	if (game->textu)
 		free(game->textu);
+	free(game);
 	return ;
 }
 
@@ -55,10 +56,10 @@ int	main(int argc, char **argv)
 		return (ft_printf(FILE_EXT_MSG), FALSE);
 	game.map = read_map(argv[1]);
 	if (!game.map)
-		return (FALSE);
-	if (check_map(game.map) == FALSE)
-		return (free_map(game.map), 1);
+		return (emptymsg());
 	size_map(&game, game.map);
+	if (check_map(game.map, &game) == FALSE)
+		return (free_map(game.map), 1);
 	if (usefull (&game, argv[1]) == FALSE)
 		return (free_map(game.map), 1);
 	if (init_game(&game) == FALSE)

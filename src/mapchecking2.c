@@ -6,36 +6,37 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:24:59 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/03/20 13:29:44 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/29 10:04:48 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	min_titles(char **map)
+int	min_titles(t_game *game)
 {
 	int	i;
 	int	o;
-	int	salida;
-	int	colec;
 
 	i = 0;
-	salida = 0;
-	colec = 0;
-	while (map[i])
+	game->n_exit = 0;
+	game->count_collec = 0;
+	game->n_entry = 0;
+	while (game->map[i])
 	{
 		o = 0;
-		while (map[i][o])
+		while (game->map[i][o])
 		{
-			if (map[i][o] == MAP_EXIT || map[i][o] == MAP_ENTRY)
-				salida++;
-			if (map[i][o] == MAP_COLLECTABLE)
-				colec++;
+			if (game->map[i][o] == MAP_EXIT)
+				game->n_exit++;
+			if (game->map[i][o] == MAP_COLLECTABLE)
+				game->count_collec++;
+			if (game->map[i][o] == MAP_ENTRY)
+				game->n_entry++;
 			o++;
 		}
 		i++;
 	}
-	if (salida != 2 || colec < 1)
+	if (game->n_exit != 1 || game->count_collec < 1 || game->n_entry > 1)
 		return (FALSE);
 	return (TRUE);
 }

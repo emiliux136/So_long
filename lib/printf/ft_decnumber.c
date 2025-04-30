@@ -6,7 +6,7 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:50:58 by emilgarc          #+#    #+#             */
-/*   Updated: 2024/12/26 12:08:22 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/29 10:08:49 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static int	knowlength(long int n)
 	}
 	return (len);
 }
+
 static char	*memory(int len, int n)
 {
 	char	*dest;
@@ -33,7 +34,7 @@ static char	*memory(int len, int n)
 	if (n < 0)
 		dest = (char *)malloc((sizeof(char)) * (len + 2));
 	dest = (char *)malloc((sizeof(char)) * (len + 1));
-	if(!dest)
+	if (!dest)
 		return (NULL);
 	return (dest);
 }

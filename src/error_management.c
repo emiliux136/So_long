@@ -6,11 +6,27 @@
 /*   By: emilgarc <emilgarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:08:32 by emilgarc          #+#    #+#             */
-/*   Updated: 2025/04/25 17:11:35 by emilgarc         ###   ########.fr       */
+/*   Updated: 2025/04/30 15:04:56 by emilgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	free_images(t_game *game)
+{
+	if (game->textu->floor)
+		mlx_delete_texture(game->textu->floor);
+	if (game->textu->floor)
+		mlx_delete_texture(game->textu->wall);
+	if (game->textu->floor)
+		mlx_delete_texture(game->textu->collec);
+	if (game->textu->floor)
+		mlx_delete_texture(game->textu->chara);
+	if (game->textu->floor)
+		mlx_delete_texture(game->textu->exit);
+	if (game->textu->floor)
+		mlx_delete_texture(game->textu->exit_2);
+}
 
 //Function that prints the wall error management.
 int	wrongwall(void)
@@ -20,10 +36,10 @@ int	wrongwall(void)
 }
 
 //Function that prints the empty map error management.
-char	**emptymsg(void)
+int	emptymsg(void)
 {
 	ft_printf("%s", EMPTY_MSG);
-	return (0);
+	return (FALSE);
 }
 
 //Function that prints the image error management.
