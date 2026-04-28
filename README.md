@@ -4,7 +4,7 @@
 ![Graphics](https://img.shields.io/badge/Library-MiniLibX-orange.svg)
 ![Status](https://img.shields.io/badge/Status-Completed-green.svg)
 
-Un pequeño motor de juego en 2D desarrollado en C utilizando la librería **MiniLibX**. Este proyecto es una introducción fundamental a la programación gráfica, el manejo de texturas y la gestión de eventos de teclado/ratón.
+Un pequeño motor de juego en 2D desarrollado en C utilizando la librería **MLX42**. Este proyecto es una introducción fundamental a la programación gráfica, el manejo de texturas y la gestión de eventos de teclado/ratón.
 
 ---
 
@@ -24,7 +24,7 @@ El objetivo es crear un juego de perspectiva superior donde un personaje debe re
 
 | Componente | Herramienta |
 | :--- | :--- |
-| **Gráficos** | MiniLibX (Framework simple de X-Window) |
+| **Gráficos** | MLX42 (Framework simple de X-Window) |
 | **Imágenes** | Gestión de archivos `.xpm` y carga de texturas. |
 | **Memoria** | Gestión estricta de punteros para evitar leaks en el renderizado. |
 | **Mapa** | Matriz bidimensional dinámica. |
